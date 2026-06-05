@@ -1,0 +1,47 @@
+{% set name = "snowpark-connect-deps-iceberg" %}
+{% set version = "1.0.1" %}
+
+package:
+  name: {{ name }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_')}}-{{ version }}.tar.gz
+  sha256: 66271bcdecc8182c4cccfe5bd2fd2c081bb55466e17fcaf81332f82154775175
+
+build:
+  number: 100
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
+  skip: true  # [py<310 or py>312]
+
+requirements:
+  host:
+    - pip
+    - python
+    - wheel
+    - setuptools
+  run:
+    - python
+
+test:
+  imports:
+    - snowpark_connect_deps_iceberg
+  commands:
+    - pip check
+  requires:
+    - pip
+
+about:
+  home: https://pypi.org/project/snowpark-connect-deps-iceberg
+  summary: Iceberg Spark JAR dependencies for Snowpark Connect
+  license: Apache-2.0
+  license_family: Apache
+  license_file: LICENSE.txt
+  description: |
+    Iceberg Spark JAR dependencies for Snowpark Connect
+  doc_url: https://pypi.org/project/snowpark-connect-deps-iceberg
+  dev_url: https://pypi.org/project/snowpark-connect-deps-iceberg
+
+extra:
+  recipe-maintainers:
+    - Andrii-Osipov
