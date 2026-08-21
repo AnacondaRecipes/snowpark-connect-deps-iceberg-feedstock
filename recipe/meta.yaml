@@ -1,5 +1,5 @@
 {% set name = "snowpark-connect-deps-iceberg" %}
-{% set version = "1.0.1" %}
+{% set version = "1.0.3" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_')}}-{{ version }}.tar.gz
-  sha256: 66271bcdecc8182c4cccfe5bd2fd2c081bb55466e17fcaf81332f82154775175
+  sha256: ada203b3ef4bea7e7b0a9b07c09bc28a35d5413b1376217ac4db58b0157c8101
 
 build:
   number: 100
